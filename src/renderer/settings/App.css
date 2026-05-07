@@ -50,6 +50,7 @@
 }
 
 .settings-nav-item:hover {
+  text-decoration: none;
   background-color: var(--sidebar-accent);
   color: var(--sidebar-accent-foreground);
 }
