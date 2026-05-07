@@ -59,8 +59,7 @@
 .model-card__badge {
   display: inline-flex;
   align-items: center;
-  padding: 2px calc(var(--spacing) * 2);
-  height: 18px;
+  padding: var(--spacing) calc(var(--spacing) * 2);
   border-radius: var(--radius-full);
   border: 1px solid var(--border);
   font-size: 0.6875rem;
@@ -76,9 +75,9 @@
 }
 
 .model-card__badge[data-badge="multilingual"] {
-  background-color: var(--secondary);
+  background-color: rgb(255 255 255 / 50%);
   color: var(--secondary-foreground);
-  border: 1px solid var(--border);
+  border: 1px solid color-mix(in oklch, var(--secondary-foreground) 30%, #fff);
 }
 
 .model-card__badge[data-badge="en-only"] {

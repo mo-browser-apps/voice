@@ -80,8 +80,7 @@
   align-items: center;
   gap: calc(var(--spacing) * 1);
   flex-shrink: 0;
-  padding: 0 calc(var(--spacing) * 2.5);  /* 0 10px */
-  height: 22px;
+  padding: var(--spacing) calc(var(--spacing) * 3);
   border-radius: var(--radius-full);
   font-size: 0.75rem;
   font-weight: 500;
@@ -94,9 +93,9 @@
 }
 
 .permission-row__badge[data-status="denied"] {
-  background-color: color-mix(in oklch, var(--accent) 38%, var(--background));
+  background-color: color-mix(in oklch, var(--accent) 40%, var(--background));
   color: var(--foreground);
-  border: 1px solid color-mix(in oklch, var(--accent) 60%, var(--border));
+  border: 1px solid var(--border);
 }
 
 .permission-row__badge[data-status="unknown"] {
@@ -123,20 +122,22 @@
   display: inline-flex;
   align-items: center;
   flex-shrink: 0;
-  padding: calc(var(--spacing) * 1.5) calc(var(--spacing) * 3);
+  padding: calc(var(--spacing) * 1.5) calc(var(--spacing) * 3.5);
   border-radius: var(--radius-md);
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   font-weight: 500;
-  color: var(--muted-foreground);
+  line-height: 1;
+  color: var(--primary);
   background-color: transparent;
-  border: 1px solid var(--border);
+  border: 1px solid var(--primary);
+  cursor: pointer;
   transition: background-color var(--duration-fast) var(--ease-out),
               color var(--duration-fast) var(--ease-out);
 }
 
 .permission-row__action:hover {
-  background-color: var(--accent);
-  color: var(--accent-foreground);
+  background-color: color-mix(in oklch, var(--primary) 10%,  #fff);
+  color: var(--primary);
 }
 
 .permission-row__action:focus-visible {
