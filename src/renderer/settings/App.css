@@ -76,18 +76,18 @@
 
 .settings-nav-item:hover {
   text-decoration: none;
-  background-color: rgb(5 93 250 / 5%);
+  background-color: color-mix(in oklch, var(--primary) 8%, #fff);
   color: var(--sidebar-foreground);
 }
 
 .settings-nav-item[aria-current="page"] {
-  background-color: rgb(5 93 250 / 10%);
-  color: var(--sidebar-active);
+  background-color: color-mix(in oklch, var(--primary) 18%, #fff);
+  color: var(--primary);
 }
 
 .settings-nav-item[aria-current="page"]:hover {
-  background-color: rgb(5 93 250 / 10%);
-  color: var(--sidebar-active);
+  background-color: color-mix(in oklch, var(--primary) 18%, #fff);
+  color: var(--primary);
 }
 
 .settings-nav-item__icon {

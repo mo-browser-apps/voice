@@ -13,7 +13,9 @@
 }
 
 .model-card[data-model-state="active"] {
-  box-shadow: inset 3px 0 0 var(--primary);
+  border-color: color-mix(in oklch, var(--info) 72%, #fff);
+  background: var(--card-active-background);
+  box-shadow: var(--card-active-shadow);
 }
 
 .model-card[data-model-state="downloading"],
@@ -57,9 +59,10 @@
 .model-card__badge {
   display: inline-flex;
   align-items: center;
-  padding: 0 calc(var(--spacing) * 1.5);
+  padding: 2px calc(var(--spacing) * 2);
   height: 18px;
   border-radius: var(--radius-full);
+  border: 1px solid var(--border);
   font-size: 0.6875rem;
   font-weight: 500;
   line-height: 1;
@@ -67,8 +70,9 @@
 }
 
 .model-card__badge[data-badge="active"] {
-  background-color: var(--primary);
-  color: var(--primary-foreground);
+  background-color: color-mix(in oklch, var(--info) 12%, #fff);
+  border-color: var(--info);
+  color: var(--info);
 }
 
 .model-card__badge[data-badge="multilingual"] {
@@ -84,9 +88,9 @@
 }
 
 .model-card__description {
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   line-height: 1.5;
-  color: var(--muted-foreground);
+  color: var(--foreground);
 }
 
 .model-card__size {
@@ -110,26 +114,31 @@
 }
 
 .score-pips__label {
-  font-size: 0.75rem;
-  color: var(--muted-foreground);
-  width: 52px;
+  font-size: 0.8125rem;
+  color: var(--foreground);
   flex-shrink: 0;
 }
 
 .score-pips__dots {
   display: flex;
+  align-items: center;
   gap: calc(var(--spacing) * 1);       /* 4px between dots */
+  margin-top: 2px;
 }
 
 .score-pips__dot {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
   border-radius: var(--radius-full);
-  background-color: var(--muted);
+  background-color: var(--muted-secondary);
 }
 
 .score-pips__dot[data-filled="true"] {
   background-color: var(--foreground);
+}
+
+.model-card[data-model-state="active"] .score-pips__dot[data-filled="true"] {
+  background-color: var(--primary);
 }
 
 /* ─── Download progress ──────────────────────────────────────────────────── */
@@ -199,9 +208,9 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: calc(var(--spacing) * 1.5) calc(var(--spacing) * 3); /* 6px 12px */
+  padding: calc(var(--spacing) * 1.5) calc(var(--spacing) * 3.5);
   border-radius: var(--radius-md);
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   font-weight: 500;
   line-height: 1;
   border: 1px solid transparent;
