@@ -3,7 +3,7 @@
 .general-page {
   display: flex;
   flex-direction: column;
-  gap: calc(var(--spacing) * 8);       /* 32px between sections */
+  gap: calc(var(--spacing) * 3);
   max-width: 720px;
 }
 
@@ -12,14 +12,35 @@
   font-weight: 600;
   line-height: 1.333;
   letter-spacing: -0.025em;
+  margin-bottom: calc(var(--spacing) * 3);
 }
 
 /* ─── Section ────────────────────────────────────────────────────────────── */
 
 .general-section {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: calc(var(--spacing) * 4);       /* 16px */
+  gap: calc(var(--spacing) * 4);
+  padding: calc(var(--spacing) * 4);
+  border-radius: var(--radius-2xl);
+  border: 1px solid rgb(255 255 255 / 66%);
+  background:
+    linear-gradient(
+      135deg,
+      rgb(255 255 255 / 78%) 0%,
+      rgb(255 255 255 / 52%) 100%
+    );
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 76%),
+    0 1px 2px rgb(17 24 39 / 4%),
+    0 18px 38px rgb(31 41 55 / 8%);
+  backdrop-filter: blur(24px) saturate(1.2);
+}
+
+.general-section > * {
+  position: relative;
+  z-index: 1;
 }
 
 .general-section__label {
@@ -31,12 +52,41 @@
   color: var(--muted-foreground);
 }
 
+.general-section__controls {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing) * 2);
+}
+
 /* ─── Form field ─────────────────────────────────────────────────────────── */
 
 .general-field {
   display: flex;
   flex-direction: column;
   gap: calc(var(--spacing) * 2);       /* 8px label-to-input gap */
+}
+
+.general-field--device {
+  flex-direction: row;
+  align-items: center;
+  gap: calc(var(--spacing) * 5);
+  padding: calc(var(--spacing) * 5);
+  border-radius: var(--radius-2xl);
+  border: 1px solid color-mix(in oklch, var(--info) 20%, rgb(255 255 255 / 66%));
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(in oklch, var(--info) 8%, rgb(255 255 255 / 74%)) 0%,
+      rgb(255 255 255 / 46%) 100%
+    );
+}
+
+.general-field__body {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  flex-direction: column;
+  gap: calc(var(--spacing) * 2);
 }
 
 .general-field__hint {
@@ -48,35 +98,81 @@
 /* ─── Permission gate ───────────────────────────────────────────────────── */
 
 .general-permission-card {
+  position: relative;
   display: flex;
-  flex-direction: column;
   align-items: flex-start;
-  gap: calc(var(--spacing) * 1.5);
+  gap: calc(var(--spacing) * 5);
+  overflow: hidden;
   padding: calc(var(--spacing) * 4);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border);
-  background-color: var(--card);
+  border-radius: var(--radius-xl);
+  border: 1px solid color-mix(in oklch, var(--info) 24%, rgb(255 255 255 / 66%));
+  background:
+    linear-gradient(
+      135deg,
+      color-mix(in oklch, var(--info) 10%, rgb(255 255 255 / 76%)) 0%,
+      rgb(255 255 255 / 48%) 100%
+    );
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 64%);
+}
+
+.general-permission-card__icon {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: var(--radius-full);
+  border: 1px solid rgb(255 255 255 / 72%);
+  background:
+    linear-gradient(
+      135deg,
+      rgb(255 255 255 / 88%) 0%,
+      color-mix(in oklch, var(--info) 14%, rgb(255 255 255 / 72%)) 100%
+    );
+  color: var(--info);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 80%),
+    0 10px 22px color-mix(in oklch, var(--info) 18%, transparent);
+}
+
+.general-permission-card__body {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  min-width: 0;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--spacing);
 }
 
 .general-permission-card__title {
   font-size: 0.875rem;
   font-weight: 600;
-  line-height: 1.429;
+  line-height: 1.35;
+  color: var(--foreground);
 }
 
 .general-permission-card__description {
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   line-height: 1.5;
   color: var(--muted-foreground);
 }
 
 .general-permission-card__link {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: calc(var(--spacing) * 1);
   padding: 0;
   border: none;
   background-color: transparent;
   color: var(--info);
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 600;
+  margin-top: calc(var(--spacing) * 2);
 }
 
 .general-permission-card__link:hover {
@@ -84,8 +180,18 @@
 }
 
 .general-permission-card__link:focus-visible {
-  outline: 3px solid var(--ring);
-  outline-offset: 2px;
+  outline: 2px solid rgb(5 93 250 / 16%);
+  outline-offset: -2px;
+}
+
+.general-permission-card__link:disabled {
+  opacity: 0.55;
+}
+
+.general-permission-card__link-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
 }
 
 /* ─── Loading skeleton ───────────────────────────────────────────────────── */
@@ -112,10 +218,11 @@
 
 .device-select {
   width: 100%;
-  padding: calc(var(--spacing) * 2) calc(var(--spacing) * 3); /* 8px 12px */
-  border-radius: var(--radius-md);
-  border: 1px solid var(--input);
-  background-color: var(--background);
+  min-height: 42px;
+  padding: calc(var(--spacing) * 2.5) calc(var(--spacing) * 3);
+  border-radius: var(--radius-xl);
+  border: 1px solid rgb(255 255 255 / 64%);
+  background-color: rgb(255 255 255 / 58%);
   color: var(--foreground);
   font-size: 0.875rem;
   line-height: 1.429;
@@ -129,22 +236,71 @@
 }
 
 .device-select:focus-visible {
-  outline: 3px solid var(--ring);
-  outline-offset: 2px;
+  outline: 2px solid rgb(5 93 250 / 16%);
+  outline-offset: -2px;
 }
 
 /* ─── Toggle row (Switch + label) ────────────────────────────────────────── */
 
 .toggle-row {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: calc(var(--spacing) * 4);
 }
 
+.toggle-row + .toggle-row {
+  padding-top: calc(var(--spacing) * 2);
+  border-top: 1px solid color-mix(in oklch, var(--border) 72%, transparent);
+}
+
+.toggle-row__content {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--spacing) * 4);
+  min-width: 0;
+}
+
+.toggle-row__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: var(--radius-xl);
+  border: 1px solid rgb(255 255 255 / 68%);
+}
+
+.toggle-row__icon[data-accent="transcripts"] {
+  --toggle-row-icon-shadow: oklch(66% 0.20 285deg / 16%);
+
+  background:
+    linear-gradient(
+      135deg,
+      oklch(94% 0.04 286deg) 0%,
+      oklch(90% 0.07 286deg) 100%
+    );
+  color: oklch(57% 0.24 278deg);
+}
+
+.toggle-row__icon[data-accent="audio"] {
+  --toggle-row-icon-shadow: oklch(66% 0.20 285deg / 16%);
+
+  background:
+    linear-gradient(
+      135deg,
+      oklch(95% 0.04 286deg) 0%,
+      oklch(92% 0.06 268deg) 100%
+    );
+  color: oklch(58% 0.22 272deg);
+}
+
 .toggle-row__label {
   font-size: 0.875rem;
   line-height: 1.429;
+  color: var(--foreground);
 }
 
 .toggle-row__hint {
@@ -153,15 +309,12 @@
   margin-top: calc(var(--spacing) * 1);
 }
 
-/* Switch styles live in ../components/Switch.css — imported by each page
-   that uses the Switch component. */
-
 /* ─── Shortcut Capture ───────────────────────────────────────────────────── */
 
 .shortcut-section {
   display: flex;
   flex-direction: column;
-  gap: calc(var(--spacing) * 3);       /* 12px */
+  gap: calc(var(--spacing) * 2);
 }
 
 /* Row of predefined shortcut pills */
@@ -174,31 +327,38 @@
 .shortcut-preset {
   padding: calc(var(--spacing) * 1.5) calc(var(--spacing) * 3); /* 6px 12px */
   border-radius: var(--radius-md);
-  border: 1px solid var(--input);
-  background-color: var(--background);
+  border: 1px solid color-mix(in oklch, var(--border) 72%, rgb(255 255 255 / 52%));
   color: var(--foreground);
   font-size: 0.875rem;
   font-family: var(--font-sans);       /* monospace feel via letter-spacing instead */
   letter-spacing: 0.02em;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 68%), 0 4px 16px rgb(31 41 55 / 5%);
   transition: background-color var(--duration-fast) var(--ease-out),
               border-color var(--duration-fast) var(--ease-out),
+              box-shadow var(--duration-fast) var(--ease-out),
               color var(--duration-fast) var(--ease-out);
 }
 
 .shortcut-preset:hover {
-  background-color: var(--accent);
-  color: var(--accent-foreground);
+  color: color-mix(in oklch, var(--info) 46%, var(--foreground));
+  box-shadow:
+          inset 0 1px 0 rgb(255 255 255 / 74%),
+          0 0 0 1px color-mix(in oklch, var(--info) 24%, transparent),
+          0 4px 12px color-mix(in oklch, var(--info) 16%, transparent);
 }
 
 .shortcut-preset:focus-visible {
-  outline: 3px solid var(--ring);
-  outline-offset: 2px;
+  outline: 2px solid rgb(5 93 250 / 16%);
+  outline-offset: -2px;
 }
 
 .shortcut-preset[data-active="true"] {
-  border-color: var(--primary);
-  background-color: var(--secondary);
-  color: var(--secondary-foreground);
+  border-color: color-mix(in oklch, var(--info) 72%, #fff);
+  color: color-mix(in oklch, var(--info) 46%, var(--foreground));
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 74%),
+    0 0 0 1px color-mix(in oklch, var(--info) 24%, transparent),
+    0 4px 12px color-mix(in oklch, var(--info) 16%, transparent);
 }
 
 /* Custom capture widget */
@@ -209,13 +369,13 @@
 }
 
 .shortcut-capture {
-  padding: calc(var(--spacing) * 1.5) calc(var(--spacing) * 3);
+  padding: calc(var(--spacing) * 1.5) calc(var(--spacing) * 3); /* 6px 12px */
   border-radius: var(--radius-md);
-  border: 1px solid var(--input);
-  background-color: var(--background);
+  border: 1px solid color-mix(in oklch, var(--border) 72%, rgb(255 255 255 / 52%));
   color: var(--muted-foreground);
   font-size: 0.875rem;
   transition: border-color var(--duration-fast) var(--ease-out),
+              background-color var(--duration-fast) var(--ease-out),
               color var(--duration-fast) var(--ease-out);
 }
 
@@ -225,13 +385,14 @@
 }
 
 .shortcut-capture:focus-visible {
-  outline: 3px solid var(--ring);
-  outline-offset: 2px;
+  outline: 2px solid rgb(5 93 250 / 16%);
+  outline-offset: -2px;
 }
 
 .shortcut-capture[data-state="capturing"] {
-  border-color: var(--ring);
+  border-color: color-mix(in oklch, var(--info) 72%, #fff);
   color: var(--foreground);
+  box-shadow: 0 0 0 1px color-mix(in oklch, var(--info) 24%, transparent);
 }
 
 .shortcut-capture__hint {
@@ -242,14 +403,30 @@
 /* Custom shortcut display (shown when active shortcut is non-predefined) */
 .shortcut-custom-value {
   font-size: 0.875rem;
-  color: var(--muted-foreground);
+  color: var(--foreground);
   letter-spacing: 0.02em;
 }
 
 /* Summary line below the capture row */
 .shortcut-summary {
-  font-size: 0.75rem;
-  color: var(--muted-foreground);
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--spacing) * 2);
+  width: 100%;
+  padding: calc(var(--spacing) * 3) calc(var(--spacing) * 4);
+  border-radius: var(--radius-xl);
+  border: 1px solid color-mix(in oklch, var(--info) 24%, rgb(255 255 255 / 66%));
+  background: linear-gradient(135deg, color-mix(in oklch, var(--info) 10%, rgb(255 255 255 / 76%)) 0%, rgb(255 255 255 / 48%) 100%);
+  font-size: 0.875rem;
+  color: var(--foreground);
+  margin-top: calc(var(--spacing) * 2);
+}
+
+.shortcut-summary__icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: var(--info);
 }
 
 .shortcut-summary__value {

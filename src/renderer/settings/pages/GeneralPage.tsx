@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { AudioLines, ChevronRight, FileText, Mic, Sparkles } from 'lucide-react';
 import { Switch } from '../components/Switch';
 import { PREDEFINED_SHORTCUTS, useGeneralController } from '../controllers/useGeneralController';
 import './GeneralPage.css';
@@ -44,7 +45,7 @@ export function GeneralPage({ onOpenPermissions }: GeneralPageProps): React.JSX.
     ? 'Microphone access is off'
     : 'Microphone access is needed';
   const micPermissionDescription = isMicPermissionDenied
-    ? 'Open System Settings and enable microphone access for MoVoice, then return here.'
+    ? 'Open System Settings and enable microphone access for MoVoice, then\u00a0return\u00a0here.'
     : 'Allow microphone access to choose your input device.';
   const micPermissionButtonLabel = isMicPermissionDenied ? 'Open System Settings' : 'Allow Access';
   const isMicPermissionButtonDisabled = isMicPermissionActionLoading || isMicPermissionPolling;
@@ -55,29 +56,41 @@ export function GeneralPage({ onOpenPermissions }: GeneralPageProps): React.JSX.
 
       <section className="general-section">
         <span className="general-section__label">Privacy</span>
-        <div className="toggle-row">
-          <label htmlFor="save-transcripts" className="toggle-row__label">
-            Save transcripts
-          </label>
-          <Switch
-            id="save-transcripts"
-            checked={saveTranscripts}
-            onChange={(value) => {
-              void handleSaveTranscripts(value);
-            }}
-          />
-        </div>
-        <div className="toggle-row">
-          <label htmlFor="save-audio" className="toggle-row__label">
-            Save audio
-          </label>
-          <Switch
-            id="save-audio"
-            checked={saveAudio}
-            onChange={(value) => {
-              void handleSaveAudio(value);
-            }}
-          />
+        <div className="general-section__controls">
+          <div className="toggle-row">
+            <div className="toggle-row__content">
+            <span className="toggle-row__icon" data-accent="transcripts" aria-hidden="true">
+              <FileText size={18} />
+            </span>
+              <label htmlFor="save-transcripts" className="toggle-row__label">
+                Save transcripts
+              </label>
+            </div>
+            <Switch
+                id="save-transcripts"
+                checked={saveTranscripts}
+                onChange={(value) => {
+                  void handleSaveTranscripts(value);
+                }}
+            />
+          </div>
+          <div className="toggle-row">
+            <div className="toggle-row__content">
+            <span className="toggle-row__icon" data-accent="audio" aria-hidden="true">
+              <AudioLines size={18} />
+            </span>
+              <label htmlFor="save-audio" className="toggle-row__label">
+                Save audio
+              </label>
+            </div>
+            <Switch
+                id="save-audio"
+                checked={saveAudio}
+                onChange={(value) => {
+                  void handleSaveAudio(value);
+                }}
+            />
+          </div>
         </div>
       </section>
 
@@ -87,51 +100,68 @@ export function GeneralPage({ onOpenPermissions }: GeneralPageProps): React.JSX.
           <div className="general-skeleton" />
         ) : !isMicPermissionGranted ? (
           <div className="general-permission-card">
-            <span className="general-permission-card__title">{micPermissionTitle}</span>
-            <span className="general-permission-card__description">
-              {micPermissionDescription}
+            <span className="general-permission-card__icon" aria-hidden="true">
+              <Mic size={24} />
             </span>
-            <button
-              type="button"
-              className="general-permission-card__link"
-              disabled={isMicPermissionButtonDisabled}
-              onClick={() => {
-                void handleMicPermissionAction();
-              }}
-            >
-              {isMicPermissionPolling ? 'Checking...' : micPermissionButtonLabel}
-            </button>
+            <div className="general-permission-card__body">
+              <span className="general-permission-card__title">{micPermissionTitle}</span>
+              <span className="general-permission-card__description">
+                {micPermissionDescription}
+              </span>
+              <button
+                type="button"
+                className="general-permission-card__link"
+                disabled={isMicPermissionButtonDisabled}
+                onClick={() => {
+                  void handleMicPermissionAction();
+                }}
+              >
+                <span>{isMicPermissionPolling ? 'Checking...' : micPermissionButtonLabel}</span>
+                <ChevronRight className="general-permission-card__link-icon" aria-hidden="true" />
+              </button>
+            </div>
           </div>
         ) : devices.length === 0 ? (
           <div className="general-permission-card">
-            <span className="general-permission-card__title">No microphone devices available</span>
-            <span className="general-permission-card__description">
-              Open the Permissions page and allow microphone access, then return here.
+            <span className="general-permission-card__icon" aria-hidden="true">
+              <Mic size={24} />
             </span>
-            <button
-              type="button"
-              className="general-permission-card__link"
-              onClick={onOpenPermissions}
-            >
-              Open Permissions
-            </button>
+            <div className="general-permission-card__body">
+              <span className="general-permission-card__title">No microphone devices available</span>
+              <span className="general-permission-card__description">
+                Open the Permissions page and allow microphone access, then return here.
+              </span>
+              <button
+                type="button"
+                className="general-permission-card__link"
+                onClick={onOpenPermissions}
+              >
+                <span>Open Permissions</span>
+                <ChevronRight className="general-permission-card__link-icon" aria-hidden="true" />
+              </button>
+            </div>
           </div>
         ) : (
-          <div className="general-field">
-            <label htmlFor="mic-select" className="toggle-row__label">Microphone</label>
-            <select
-              id="mic-select"
-              className="device-select"
-              value={selectedDeviceId}
-              onChange={(event) => {
-                void handleDeviceChange(event.target.value);
-              }}
-            >
-              <option value="">System default</option>
-              {devices.map((device) => (
-                <option key={device.deviceId} value={device.deviceId}>{device.label}</option>
-              ))}
-            </select>
+          <div className="general-field general-field--device">
+            <span className="general-permission-card__icon" aria-hidden="true">
+              <Mic size={24} />
+            </span>
+            <div className="general-field__body">
+              <label htmlFor="mic-select" className="toggle-row__label">Microphone</label>
+              <select
+                id="mic-select"
+                className="device-select"
+                value={selectedDeviceId}
+                onChange={(event) => {
+                  void handleDeviceChange(event.target.value);
+                }}
+              >
+                <option value="">System default</option>
+                {devices.map((device) => (
+                  <option key={device.deviceId} value={device.deviceId}>{device.label}</option>
+                ))}
+              </select>
+            </div>
           </div>
         )}
       </section>
@@ -176,7 +206,8 @@ export function GeneralPage({ onOpenPermissions }: GeneralPageProps): React.JSX.
             </div>
             {shortcutKey !== '' && (
               <span className="shortcut-summary">
-                Active shortcut: <span className="shortcut-summary__value">{shortcutKey}</span>
+                <Sparkles className="shortcut-summary__icon" aria-hidden="true" />
+                <span>Active shortcut: <span className="shortcut-summary__value">{shortcutKey}</span></span>
               </span>
             )}
           </div>
