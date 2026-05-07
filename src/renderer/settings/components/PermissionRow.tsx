@@ -1,5 +1,5 @@
 import { Loader2 } from 'lucide-react';
-import { PermissionStatus, type PermissionStatusProto } from '../../gen/permissions';
+import { PermissionStatus, PermissionType, type PermissionStatusProto } from '../../gen/permissions';
 import './PermissionRow.css';
 
 /**
@@ -49,6 +49,10 @@ function actionLabel(status: PermissionStatus, isRequesting: boolean): string {
   return status === PermissionStatus.PERMISSION_STATUS_DENIED ? 'Open System Settings' : 'Allow Access';
 }
 
+function iconAccent(type: PermissionType): string {
+  return type === PermissionType.PERMISSION_TYPE_MICROPHONE ? 'audio' : 'transcripts';
+}
+
 /**
  * One row in the Permissions page -- icon, name, description, status badge, optional action.
  */
@@ -63,7 +67,7 @@ export function PermissionRow({
 
   return (
     <div className="permission-row">
-      <div className="permission-row__icon-wrap">
+      <div className="permission-row__icon-wrap" data-accent={iconAccent(permission.type)}>
         <Icon className="permission-row__icon" aria-hidden="true" />
       </div>
 

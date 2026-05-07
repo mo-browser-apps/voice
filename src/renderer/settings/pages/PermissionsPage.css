@@ -15,6 +15,8 @@
   display: flex;
   flex-direction: column;
   gap: calc(var(--spacing) * 1);
+  flex: 1;
+  min-width: 0;
 }
 
 .permissions-page__heading {
@@ -30,14 +32,25 @@
 }
 
 .permissions-page__setup-hint {
+  display: flex;
+  align-items: flex-start;
+  gap: calc(var(--spacing) * 2);
   margin-top: calc(var(--spacing) * 2);
   border-radius: var(--radius-md);
   border: 1px solid color-mix(in oklch, var(--destructive) 35%, var(--border));
   background-color: color-mix(in oklch, var(--destructive) 10%, var(--background));
   color: var(--foreground);
-  padding: calc(var(--spacing) * 2) calc(var(--spacing) * 3);
+  padding: calc(var(--spacing) * 3) calc(var(--spacing) * 4);
   font-size: 0.8125rem;
   line-height: 1.45;
+}
+
+.permissions-page__setup-hint-icon {
+  width: 16px;
+  height: 16px;
+  margin-top: 0.0625rem;
+  flex-shrink: 0;
+  color: var(--destructive);
 }
 
 /* ─── Refresh button ─────────────────────────────────────────────────────── */

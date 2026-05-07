@@ -14,20 +14,41 @@
 /* ─── Icon container ─────────────────────────────────────────────────────── */
 
 .permission-row__icon-wrap {
-  display: flex;
+  display: inline-flex;
+  align-self: flex-start;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   flex-shrink: 0;
-  border-radius: var(--radius-md);
-  background-color: var(--secondary);
+  border-radius: var(--radius-xl);
+  border: 1px solid rgb(255 255 255 / 68%);
+}
+
+.permission-row__icon-wrap[data-accent="transcripts"] {
+  background:
+    linear-gradient(
+      135deg,
+      oklch(94% 0.04 286deg) 0%,
+      oklch(90% 0.07 286deg) 100%
+    );
+  color: oklch(57% 0.24 278deg);
+}
+
+.permission-row__icon-wrap[data-accent="audio"] {
+  background:
+    linear-gradient(
+      135deg,
+      oklch(95% 0.04 286deg) 0%,
+      oklch(92% 0.06 268deg) 100%
+    );
+  color: oklch(58% 0.22 272deg);
 }
 
 .permission-row__icon {
-  width: 16px;
-  height: 16px;
-  color: var(--muted-foreground);
+  width: 18px;
+  height: 18px;
+  color: currentcolor;
 }
 
 /* ─── Text block ─────────────────────────────────────────────────────────── */
@@ -47,7 +68,7 @@
 }
 
 .permission-row__description {
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   line-height: 1.5;
   color: var(--muted-foreground);
 }

@@ -1,4 +1,4 @@
-import { Mic, Keyboard, Loader2, type LucideIcon } from 'lucide-react';
+import { Mic, Keyboard, Loader2, TriangleAlert, type LucideIcon } from 'lucide-react';
 import { PermissionType } from '../../gen/permissions';
 import { PermissionRow, type PermissionMeta } from '../components/PermissionRow';
 import { usePermissionsController } from '../controllers/usePermissionsController';
@@ -60,11 +60,14 @@ export function PermissionsPage(props: PermissionsPageProps): React.JSX.Element 
           </p>
           {(needsMicrophonePermission || needsAccessibilityPermission) && (
             <p className="permissions-page__setup-hint">
-              {needsMicrophonePermission && needsAccessibilityPermission
-                ? 'Please grant Microphone and Accessibility permissions to start recording.'
-                : (needsMicrophonePermission
-                  ? 'Please grant Microphone permission to start recording.'
-                  : 'Please grant Accessibility permission to paste transcriptions into other apps.')}
+              <TriangleAlert className="permissions-page__setup-hint-icon" aria-hidden="true" />
+              <span>
+                {needsMicrophonePermission && needsAccessibilityPermission
+                  ? 'Please grant Microphone and Accessibility permissions to start recording.'
+                  : (needsMicrophonePermission
+                    ? 'Please grant Microphone permission to start recording.'
+                    : 'Please grant Accessibility permission to paste transcriptions into other apps.')}
+              </span>
             </p>
           )}
         </div>

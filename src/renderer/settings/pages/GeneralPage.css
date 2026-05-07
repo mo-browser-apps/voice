@@ -119,6 +119,11 @@
     0 10px 22px color-mix(in oklch, var(--info) 18%, transparent);
 }
 
+.general-permission-card__icon svg {
+  width: 20px;
+  height: 20px;
+}
+
 .general-permission-card__body {
   position: relative;
   z-index: 1;
@@ -134,10 +139,11 @@
   font-weight: 600;
   line-height: 1.35;
   color: var(--foreground);
+  margin-top: var(--spacing);
 }
 
 .general-permission-card__description {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   line-height: 1.5;
   color: var(--muted-foreground);
 }
