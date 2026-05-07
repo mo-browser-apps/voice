@@ -121,6 +121,7 @@
   --sidebar-accent-foreground:  oklch(20.5% 0 0deg);
   --sidebar-border:             oklch(92.2% 0 0deg);
   --sidebar-ring:               oklch(70.8% 0 0deg);
+  --sidebar-active:             oklch(49% 0.23 255deg);
 
   /* Status */
   --success:            oklch(59.6% 0.145 163.2deg);
