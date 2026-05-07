@@ -3,14 +3,12 @@
 .model-card {
   display: flex;
   flex-direction: column;
-  gap: calc(var(--spacing) * 3);       /* 12px between rows */
-  padding: calc(var(--spacing) * 4);   /* 16px */
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border);
-  background-color: var(--card);
-
-  /* Left accent via box-shadow — no layout shift */
-  box-shadow: inset 3px 0 0 transparent;
+  gap: calc(var(--spacing) * 4);
+  padding: var(--card-padding);
+  border-radius: var(--card-border-radius);
+  border: var(--card-border);
+  background: var(--card-background);
+  box-shadow: var(--card-shadow);
   transition: box-shadow var(--duration-fast) var(--ease-out);
 }
 
