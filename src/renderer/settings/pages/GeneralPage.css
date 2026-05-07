@@ -233,7 +233,7 @@
 
 .toggle-row + .toggle-row {
   padding-top: calc(var(--spacing) * 2);
-  border-top: 1px solid color-mix(in oklch, var(--border) 72%, transparent);
+  border-top: 1px solid var(--border);
 }
 
 .toggle-row__content {
