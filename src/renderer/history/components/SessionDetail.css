@@ -90,17 +90,29 @@
 .session-detail__meta {
   display: grid;
   grid-template-columns: 160px 1fr;
-  gap: calc(var(--spacing) * 1) calc(var(--spacing) * 4); /* 4px row, 16px col */
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+}
+
+.session-detail__meta-label,
+.session-detail__meta-value {
+  font-size: 0.875rem;
+  padding: 8px;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.session-detail__meta > :nth-last-child(-n + 2) {
+  border-bottom: none;
 }
 
 .session-detail__meta-label {
-  font-size: 0.875rem;
   color: var(--muted-foreground);
 }
 
 .session-detail__meta-value {
-  font-size: 0.875rem;
   color: var(--foreground);
+  border-right: none;
 }
 
 /* ─── Action row ─────────────────────────────────────────────────────────── */

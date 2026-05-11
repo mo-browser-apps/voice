@@ -3,7 +3,11 @@
 .session-list {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 2px 0 0;
+}
+
+.session-list__item {
+  padding: calc(var(--spacing) * 2);
 }
 
 /* Thin divider between items — border-top on every item except the first */

@@ -313,9 +313,6 @@
 }
 
 .shortcut-preset {
-  --shortcut-preset-shadow: inset 0 1px 0 rgb(255 255 255 / 68%), 0 4px 16px rgb(31 41 55 / 5%);
-  --shortcut-preset-active-shadow: inset 0 1px 0 rgb(255 255 255 / 74%), 0 0 0 1px color-mix(in oklch, var(--info) 24%, transparent), 0 4px 12px color-mix(in oklch, var(--info) 16%, transparent);
-
   padding: calc(var(--spacing) * 1.5) calc(var(--spacing) * 3); /* 6px 12px */
   border-radius: var(--radius-md);
   border: 1px solid color-mix(in oklch, var(--border) 72%, rgb(255 255 255 / 52%));
@@ -323,7 +320,7 @@
   font-size: 0.875rem;
   font-family: var(--font-sans);       /* monospace feel via letter-spacing instead */
   letter-spacing: 0.02em;
-  box-shadow: var(--shortcut-preset-shadow);
+  box-shadow: var(--list-item-shadow);
   transition: background-color var(--duration-fast) var(--ease-out),
               border-color var(--duration-fast) var(--ease-out),
               box-shadow var(--duration-fast) var(--ease-out),
@@ -332,7 +329,7 @@
 
 .shortcut-preset:hover {
   color: color-mix(in oklch, var(--info) 46%, var(--foreground));
-  box-shadow: var(--shortcut-preset-active-shadow);
+  box-shadow: var(--list-item-active-shadow);
 }
 
 .shortcut-preset:focus-visible {
@@ -343,7 +340,7 @@
 .shortcut-preset[data-active="true"] {
   border-color: color-mix(in oklch, var(--info) 72%, #fff);
   color: color-mix(in oklch, var(--info) 46%, var(--foreground));
-  box-shadow: var(--shortcut-preset-active-shadow);
+  box-shadow: var(--list-item-active-shadow);
 }
 
 /* Custom capture widget */
