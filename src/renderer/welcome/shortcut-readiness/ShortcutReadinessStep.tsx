@@ -12,7 +12,9 @@ export function ShortcutReadinessStep(props: ShortcutReadinessStepProps): React.
 
   return (
     <section className="welcome-stage">
-      <h2 className="welcome-stage__title">You are ready to speak</h2>
+      <div className="welcome-stage__title-section">
+        <h2 className="welcome-stage__title">You are ready to speak</h2>
+      </div>
       <div className="welcome-stage__body">
         <div className="welcome-final-stage">
           <div className="welcome-final-stage__primary">

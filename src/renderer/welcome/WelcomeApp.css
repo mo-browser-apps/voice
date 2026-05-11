@@ -2,7 +2,6 @@
   display: grid;
   grid-template-rows: 1fr auto;
   height: 100vh;
-  overflow: hidden;
   background:
     radial-gradient(120% 90% at 0% 0%, color-mix(in oklch, var(--info) 14%, transparent), transparent 60%),
     radial-gradient(80% 70% at 100% 100%, color-mix(in oklch, var(--warning) 18%, transparent), transparent 55%),
@@ -16,7 +15,7 @@
 .welcome-progress {
   display: flex;
   align-items: center;
-  gap: calc(var(--spacing) * 1.5);
+  gap: calc(var(--spacing) * 2);
 }
 
 .welcome-progress__label {
@@ -30,7 +29,6 @@
   height: 8px;
   border-radius: var(--radius-full);
   background-color: color-mix(in oklch, var(--muted-foreground) 45%, var(--background));
-  border: 1px solid color-mix(in oklch, var(--foreground) 24%, var(--background));
   transition: transform var(--duration-normal) var(--ease-spring),
               background-color var(--duration-fast) var(--ease-out);
 }
@@ -45,17 +43,23 @@
 }
 
 .welcome-wizard__content {
-  overflow: hidden;
-  padding: calc(var(--spacing) * 8) calc(var(--spacing) * 8) calc(var(--spacing) * 5);
+  padding-top: calc(var(--spacing) * 8);
   min-height: 0;
 }
 
 .welcome-stage {
   display: grid;
-  grid-template-rows: auto auto 1fr;
-  gap: calc(var(--spacing) * 2);
+  grid-template-rows: auto 1fr auto;
   height: 100%;
   min-height: 0;
+}
+
+.welcome-stage__title-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing);
+  padding-inline: calc(var(--spacing) * 8);
+  padding-bottom: calc(var(--spacing) * 2);
 }
 
 .welcome-stage__title {
@@ -65,40 +69,43 @@
 }
 
 .welcome-stage__description {
-  font-size: 0.92rem;
+  font-size: 0.875rem;
   color: var(--muted-foreground);
 }
 
 .welcome-stage__body {
   overflow-y: auto;
   min-height: 0;
-  padding-top: calc(var(--spacing) * 2);
+  padding-top: calc(var(--spacing) * 3);
+  padding-inline: calc(var(--spacing) * 8);
 }
 
 .welcome-stage__body--permission {
-  overflow: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .welcome-permission-guide {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: calc(var(--spacing) * 2.5);
-  max-width: 540px;
   width: 100%;
   margin: 0 auto;
 }
 
 .welcome-permission-guide__label {
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   color: var(--muted-foreground);
   text-align: center;
 }
 
+.welcome-permission-guide__empty-spacer {
+  height: calc(var(--spacing) * 6);
+}
+
 .welcome-stage__body--static {
-  overflow: hidden;
   display: grid;
   grid-template-rows: 1fr auto;
   gap: calc(var(--spacing) * 2);
@@ -108,29 +115,22 @@
 .welcome-model-list {
   display: flex;
   flex-direction: column;
-  gap: calc(var(--spacing) * 1.25);
-  overflow: hidden;
+  gap: calc(var(--spacing) * 2);
   min-height: 0;
-  padding: 1px;
 }
 
 .welcome-model-tile {
-  text-align: left;
   position: relative;
-  border: 1px solid color-mix(in oklch, var(--border) 75%, var(--background));
-  border-radius: var(--radius-xl);
-  background: linear-gradient(
-    120deg,
-    color-mix(in oklch, var(--card) 93%, var(--background)),
-    color-mix(in oklch, var(--secondary) 35%, var(--card))
-  );
-  padding: calc(var(--spacing) * 2.5);
   display: flex;
-  flex-direction: row;
   align-items: flex-start;
-  gap: calc(var(--spacing) * 2);
-  box-shadow: var(--shadow-sm);
+  text-align: left;
   width: 100%;
+  border: var(--card-border);
+  border-radius: var(--card-border-radius);
+  background: var(--card-background);
+  padding: var(--card-padding);
+  gap: calc(var(--spacing) * 2);
+  box-shadow: var(--card-shadow);
   transition: border-color var(--duration-fast) var(--ease-out),
               opacity var(--duration-fast) var(--ease-out);
 }
@@ -152,7 +152,7 @@
 }
 
 .welcome-model-tile__description {
-  font-size: 0.68rem;
+  font-size: 0.8125rem;
   color: var(--muted-foreground);
   line-height: 1.4;
   margin: 0;
@@ -249,7 +249,7 @@
 }
 
 .welcome-model-card__name {
-  font-size: 0.76rem;
+  font-size: 0.875rem;
   font-weight: 700;
   line-height: 1.2;
 }
@@ -326,13 +326,14 @@
 .welcome-status {
   display: flex;
   align-items: center;
-  gap: calc(var(--spacing) * 1.5);
-  font-size: 0.85rem;
-  border-radius: var(--radius-lg);
-  padding: calc(var(--spacing) * 2);
-  border: 1px solid color-mix(in oklch, var(--border) 70%, var(--background));
-  background-color: color-mix(in oklch, var(--secondary) 55%, var(--background));
-  color: var(--muted-foreground);
+  width: 100%;
+  gap: calc(var(--spacing) * 2);
+  font-size: 0.875rem;
+  border-radius: var(--radius-md);
+  padding: calc(var(--spacing) * 2.5) calc(var(--spacing) * 4);
+  border: 1px solid color-mix(in oklch, var(--info) 24%, rgb(255 255 255 / 66%));
+  background: var(--card-active-background);
+  color: var(--foreground);
   transition: transform var(--duration-normal) var(--ease-spring),
               background-color var(--duration-normal) var(--ease-out),
               color var(--duration-normal) var(--ease-out);
@@ -344,14 +345,15 @@
 }
 
 .welcome-status[data-state="success"] {
-  background-color: color-mix(in oklch, var(--success) 16%, var(--background));
+  background-color: color-mix(in oklch, var(--success) 16%, white);
+  border-color: color-mix(in oklch, var(--success) 50%, white);
   color: color-mix(in oklch, var(--success) 88%, var(--foreground));
-  transform: translateY(-2px);
 }
 
 .welcome-status[data-state="info"] {
   background-color: color-mix(in oklch, var(--warning) 18%, var(--background));
-  color: color-mix(in oklch, var(--warning) 75%, var(--foreground));
+  border-color: var(--destructive);
+  color: var(--destructive);
 }
 
 .welcome-stage__bottom-action {
@@ -360,26 +362,26 @@
 }
 
 .welcome-permission-guide__image {
+  display: block;
+  object-fit: cover;
+  margin: 0 auto;
   width: 100%;
   max-width: 304px;
   height: auto;
   border: 0;
   border-radius: 0;
   box-shadow: none;
-  object-fit: cover;
-  margin: 0 auto;
-  display: block;
 }
 
 .welcome-input-card {
-  border-radius: var(--radius-xl);
-  border: 1px solid color-mix(in oklch, var(--border) 75%, var(--background));
-  background-color: color-mix(in oklch, var(--card) 94%, var(--background));
-  padding: calc(var(--spacing) * 4);
-  box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
   gap: calc(var(--spacing) * 2);
+  border-radius: var(--card-border-radius);
+  border: var(--card-border);
+  background: var(--card-background);
+  padding: var(--card-padding);
+  box-shadow: var(--card-shadow);
 }
 
 .welcome-input-card__label {
@@ -577,6 +579,7 @@
   border: 1px solid transparent;
   font-size: 0.84rem;
   font-weight: 560;
+  width: max-content;
   transition: background-color var(--duration-fast) var(--ease-out),
               color var(--duration-fast) var(--ease-out),
               border-color var(--duration-fast) var(--ease-out),

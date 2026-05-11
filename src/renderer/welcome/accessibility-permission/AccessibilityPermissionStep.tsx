@@ -21,10 +21,12 @@ export function AccessibilityPermissionStep(props: AccessibilityPermissionStepPr
 
   return (
     <section className="welcome-stage">
-      <h2 className="welcome-stage__title">Allow Accessibility access</h2>
-      <p className="welcome-stage__description">
-        Accessibility permission lets MoVoice paste transcription into the app you were using.
-      </p>
+      <div className="welcome-stage__title-section">
+        <h2 className="welcome-stage__title">Allow Accessibility access</h2>
+        <p className="welcome-stage__description">
+          Accessibility permission lets MoVoice paste transcription into the app you were using.
+        </p>
+      </div>
       <div className="welcome-stage__body welcome-stage__body--permission">
         <div className="welcome-permission-guide">
           <div className="welcome-status" data-state={accessibilityFeedback}>
@@ -44,6 +46,7 @@ export function AccessibilityPermissionStep(props: AccessibilityPermissionStepPr
           <p className="welcome-permission-guide__label">
             Open System Settings and enable MoVoice in Accessibility.
           </p>
+          <div className="welcome-permission-guide__empty-spacer"></div>
           {accessibilityStatus !== PermissionStatus.PERMISSION_STATUS_GRANTED && (
             <button
               type="button"
