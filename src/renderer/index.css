@@ -111,6 +111,7 @@
   --muted-foreground: oklch(55.6% 0 0deg);
   --border:           oklch(92.2% 0 0deg);
   --input:            oklch(92.2% 0 0deg);
+  --input-border:     oklch(88% 0 0deg);
   --ring:             oklch(70.8% 0 0deg);
 
   /* Sidebar */

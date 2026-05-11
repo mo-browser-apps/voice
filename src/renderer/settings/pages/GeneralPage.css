@@ -59,7 +59,7 @@
 
 .general-field--device {
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   gap: calc(var(--spacing) * 5);
   padding: calc(var(--spacing) * 5);
   border-radius: var(--radius-2xl);
@@ -207,9 +207,9 @@
   width: 100%;
   min-height: 42px;
   padding: calc(var(--spacing) * 2.5) calc(var(--spacing) * 3);
-  border-radius: var(--radius-xl);
-  border: 1px solid rgb(255 255 255 / 64%);
-  background-color: rgb(255 255 255 / 58%);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--input-border);
+  background-color: white;
   color: var(--foreground);
   font-size: 0.875rem;
   line-height: 1.429;
@@ -286,7 +286,8 @@
 
 .toggle-row__label {
   font-size: 0.875rem;
-  line-height: 1.429;
+  line-height: 1.5;
+  font-weight: 600;
   color: var(--foreground);
 }
 
