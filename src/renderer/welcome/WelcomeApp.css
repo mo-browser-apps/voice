@@ -410,8 +410,8 @@
 }
 
 .welcome-select:focus-visible {
-  outline: 3px solid color-mix(in oklch, var(--ring) 45%, transparent);
-  outline-offset: 2px;
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-offset);
 }
 
 .welcome-final-stage {
@@ -621,8 +621,8 @@
 }
 
 .welcome-btn:focus-visible {
-  outline: 3px solid color-mix(in oklch, var(--ring) 45%, transparent);
-  outline-offset: 2px;
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-offset);
 }
 
 .welcome-wizard__ready {

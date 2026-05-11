@@ -70,8 +70,8 @@
 }
 
 .settings-nav-item:focus-visible {
-  outline: 2px solid rgb(5 93 250 / 16%);
-  outline-offset: -2px;
+  outline: var(--focus-outline);
+  outline-offset: var(--focus-outline-offset);
 }
 
 .settings-nav-item:hover {
