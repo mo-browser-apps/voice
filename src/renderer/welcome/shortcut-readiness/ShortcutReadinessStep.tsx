@@ -1,3 +1,4 @@
+import { Mic } from 'lucide-react';
 import { ShortcutKeycaps } from './ShortcutKeycaps';
 
 interface ShortcutReadinessStepProps {
@@ -11,11 +12,14 @@ export function ShortcutReadinessStep(props: ShortcutReadinessStepProps): React.
   const { shortcutKey } = props;
 
   return (
-    <section className="welcome-stage">
+    <section className="welcome-stage welcome-stage__shortcut-readiness">
       <div className="welcome-stage__title-section">
+        <span className="welcome-final-stage__icon" aria-hidden="true">
+          <Mic />
+        </span>
         <h2 className="welcome-stage__title">You are ready to speak</h2>
       </div>
-      <div className="welcome-stage__body">
+      <div className="welcome-stage__body welcome-stage__body-final-stage">
         <div className="welcome-final-stage">
           <div className="welcome-final-stage__primary">
             <p className="welcome-final-stage__close-hint">
