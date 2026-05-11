@@ -46,6 +46,7 @@
 }
 
 .session-detail__transcript--empty {
+  background-color: var(--muted);
   color: var(--muted-foreground);
   font-style: italic;
 }
