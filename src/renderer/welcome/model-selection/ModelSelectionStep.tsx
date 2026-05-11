@@ -119,7 +119,6 @@ export function ModelSelectionStep(props: ModelSelectionStepProps): React.JSX.El
           {downloadErrors.size > 0 && (
             <p className="welcome-model-card__error">{downloadErrors.values().next().value}</p>
           )}
-          <p className="welcome-model-card__error">Error</p>
         </div>
       </div>
     </section>
