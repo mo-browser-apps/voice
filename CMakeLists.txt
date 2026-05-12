@@ -10,6 +10,11 @@ endif()
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# Keep fetched Abseil headers ahead of any globally installed Abseil under
+# /usr/local/include. Apple Clang searches /usr/local/include before -isystem
+# paths, so Abseil must not be added as a system include directory.
+set(ABSL_USE_SYSTEM_INCLUDES OFF CACHE BOOL "Use regular include paths for fetched Abseil" FORCE)
+
 set(PROJECT_ROOT_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 cmake_path(ABSOLUTE_PATH PROJECT_ROOT_DIR NORMALIZE)
 
