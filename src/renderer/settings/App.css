@@ -46,6 +46,7 @@
   position: relative;
   display: flex;
   align-items: center;
+  text-decoration: none;
   gap: calc(var(--spacing) * 2);
   min-height: 36px;
   padding: calc(var(--spacing) * 2) calc(var(--spacing) * 3);
@@ -66,20 +67,15 @@
   outline-offset: var(--focus-outline-offset);
 }
 
-.settings-nav-item:hover {
-  text-decoration: none;
-  background-color: var(--setting-sidebar-item-hover-bg);
-  color: var(--setting-sidebar-item-hover-color);
-}
-
 .settings-nav-item[aria-current="page"] {
-  background-color: var(--setting-sidebar-item-active-bg);
-  color: var(--setting-sidebar-item-active-color);
+  background-color: var(--settings-sidebar-item-active-bg);
+  color: var(--settings-sidebar-item-active-color);
 }
 
-.settings-nav-item[aria-current="page"]:hover {
-  background-color: color-mix(in oklch, var(--primary) 18%, transparent);
-  color: var(--primary);
+.settings-nav-item:not([aria-current="page"]):hover {
+  text-decoration: none;
+  background-color: var(--settings-sidebar-item-hover-bg);
+  color: var(--settings-sidebar-item-hover-color);
 }
 
 .settings-nav-item__icon {
@@ -99,8 +95,8 @@
   width: 0.5rem;
   height: 0.5rem;
   flex-shrink: 0;
-  background-color: color-mix(in oklch, var(--destructive) 82%, #ff8b8b);
-  box-shadow: 0 0 0 1px color-mix(in oklch, var(--destructive) 45%, transparent);
+  background-color: var(--settings-sidebar-marker-bg);
+  box-shadow: var(--settings-sidebar-marker-shadow);
 }
 
 /* ─── Content area ──────────────────────────────────────────────────────── */

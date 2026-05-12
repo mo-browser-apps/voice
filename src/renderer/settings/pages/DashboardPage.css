@@ -34,6 +34,7 @@
   border-radius: var(--card-border-radius);
   background: var(--card-background);
   box-shadow: var(--card-shadow);
+  backdrop-filter: var(--glass-backdrop-filter);
 }
 
 .stat-card::before,
@@ -105,12 +106,12 @@
   height: 40px;
   border-radius: var(--radius-xl);     /* 14px */
   flex-shrink: 0;
-  border: 1px solid rgb(255 255 255 / 60%);
+  border: 1px solid var(--liquid-panel-border-soft);
   background:
     linear-gradient(
       135deg,
-      color-mix(in oklch, var(--stat-card-accent) 28%, #fff) 0%,
-      color-mix(in oklch, var(--stat-card-accent) 16%, #fff) 100%
+      color-mix(in oklch, var(--stat-card-accent) 28%, var(--liquid-base)) 0%,
+      color-mix(in oklch, var(--stat-card-accent) 16%, var(--liquid-base)) 100%
     );
   color: var(--stat-card-accent-strong);
 }

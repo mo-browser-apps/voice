@@ -188,15 +188,53 @@
   --focus-outline: 1px solid var(--ring);
   --focus-outline-offset: 2px;
 
+  /* App backdrop */
+  --app-background-image: none;
+
+  /* Liquid glass color primitives */
+  --liquid-base: #fff;
+  --liquid-panel-border: rgb(255 255 255 / 66%);
+  --liquid-panel-border-faint: rgb(255 255 255 / 52%);
+  --liquid-panel-border-medium: rgb(255 255 255 / 68%);
+  --liquid-panel-border-soft: rgb(255 255 255 / 60%);
+  --liquid-panel-border-strong: rgb(255 255 255 / 72%);
+  --liquid-panel-highlight: rgb(255 255 255 / 80%);
+  --liquid-panel-highlight-soft: rgb(255 255 255 / 64%);
+  --liquid-control-bg: #fff;
+  --liquid-control-border: var(--input);
+  --liquid-badge-bg: rgb(255 255 255 / 50%);
+  --liquid-visual-panel-bg: color-mix(in oklch, var(--card) 92%, var(--background));
+  --liquid-soft-panel-bg: color-mix(in oklch, var(--card) 94%, var(--background));
+  --liquid-soft-panel-border: color-mix(in oklch, var(--border) 75%, var(--background));
+  --liquid-dashed-panel-border: color-mix(in oklch, var(--border) 70%, var(--foreground));
+  --liquid-read-panel-bg: var(--card);
+  --liquid-read-panel-border: 1px solid var(--border);
+  --liquid-grid-panel-bg: transparent;
+  --liquid-dialog-bg: var(--background);
+  --liquid-dialog-border: 1px solid var(--border);
+  --liquid-icon-accent: var(--info);
+  --liquid-icon-border: 1px solid var(--liquid-panel-border-strong);
+  --liquid-icon-background: linear-gradient(
+    135deg,
+    rgb(255 255 255 / 88%) 0%,
+    color-mix(in oklch, var(--liquid-icon-accent) 14%, rgb(255 255 255 / 72%)) 100%
+  );
+  --liquid-icon-shadow: inset 0 1px 0 var(--liquid-panel-highlight),
+                        0 10px 22px color-mix(in oklch, var(--liquid-icon-accent) 18%, transparent);
+  --glass-backdrop-filter: none;
+
   /* Cards */
   --card-background: linear-gradient(135deg, rgb(255 255 255 / 78%) 0%, rgb(255 255 255 / 52%) 100%);
   --card-shadow: inset 0 1px 0 rgb(255 255 255 / 76%), 0 1px 2px rgb(17 24 39 / 4%), 0 18px 38px rgb(31 41 55 / 8%);
   --card-border: 1px solid rgb(255 255 255 / 66%);
   --card-border-radius: var(--radius-2xl);
   --card-padding: calc(var(--spacing) * 4);
-
   --card-active-background: linear-gradient(135deg, color-mix(in oklch, var(--info) 8%, rgb(255 255 255 / 76%)) 0%, rgb(255 255 255 / 50%) 100%);
   --card-active-shadow: inset 0 1px 0 rgb(255 255 255 / 74%), 0 0 0 1px color-mix(in oklch, var(--info) 24%, transparent), 0 4px 12px color-mix(in oklch, var(--info) 16%, transparent);
+
+  --permission-card-background: var(--card-active-background);
+  --permission-card-border-color: color-mix(in oklch, var(--info) 24%, var(--liquid-panel-border));
+  --permission-card-icon-accent: var(--info);
 
   /* Clickable list items */
   --list-item-shadow: inset 0 1px 0 rgb(255 255 255 / 68%), 0 4px 16px rgb(31 41 55 / 5%);
@@ -211,73 +249,237 @@
                              inset -1px 0 0 rgb(0 0 0 / 8%),
                              inset 0 -1px 0 rgb(0 0 0 / 8%),
                              12px 0 30px rgb(89 105 130 / 9%);
-  --setting-sidebar-item-active-bg: color-mix(in oklch, var(--primary) 18%, #fff);
-  --setting-sidebar-item-active-color: var(--primary);
-  --setting-sidebar-item-hover-bg: color-mix(in oklch, var(--primary) 8%, transparent);
-  --setting-sidebar-item-hover-color: var(--sidebar-foreground);
+  --settings-sidebar-item-active-bg: color-mix(in oklch, var(--primary) 18%, var(--liquid-base));
+  --settings-sidebar-item-active-color: var(--primary);
+  --settings-sidebar-item-hover-bg: color-mix(in oklch, var(--primary) 8%, transparent);
+  --settings-sidebar-item-hover-color: var(--sidebar-foreground);
+  --settings-sidebar-marker-bg: color-mix(in oklch, var(--destructive) 82%, #ff8b8b);
+  --settings-sidebar-marker-shadow: 0 0 0 1px color-mix(in oklch, var(--destructive) 45%, transparent);
+
+  /* Component accents */
+  --transcripts-icon-bg: linear-gradient(135deg, oklch(94% 0.04 286deg) 0%, oklch(90% 0.07 286deg) 100%);
+  --transcripts-icon-color: oklch(57% 0.24 278deg);
+  --audio-icon-bg: linear-gradient(135deg, oklch(95% 0.04 286deg) 0%, oklch(92% 0.06 268deg) 100%);
+  --audio-icon-color: oklch(58% 0.22 272deg);
+  --device-select-chevron-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  --welcome-select-chevron-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  --shortcut-keycaps-border: 1px solid rgb(255 255 255 / 72%);
+  --shortcut-keycaps-bg: linear-gradient(145deg, rgb(255 255 255 / 72%) 0%, rgb(255 255 255 / 34%) 100%);
+  --shortcut-keycaps-shadow: inset 0 1px 0 rgb(255 255 255 / 84%),
+                             0 1px 2px rgb(17 24 39 / 5%),
+                             0 18px 38px rgb(31 41 55 / 10%),
+                             1px 0 1px color-mix(in oklch, var(--info) 20%, transparent);
+  --shortcut-key-bg: white;
+  --shortcut-key-border: 1px solid rgb(0 0 0 / 6%);
+  --shortcut-key-shadow: inset 0 -5px 0 rgb(0 0 0 / 6%);
+  --shortcut-key-first-shadow: inset 0 -5px 0 rgb(0 0 0 / 6%), -1px 1px 1px color-mix(in oklch, var(--info) 20%, transparent);
+  --switch-thumb-color: #fff;
 }
 
 /* ─── Semantic tokens — Dark mode ───────────────────────────────────────────── */
 .dark {
   /* Surface & text */
-  --background:        oklch(14.5% 0 0deg);
-  --foreground:        oklch(98.5% 0 0deg);
-  --card:              oklch(20.5% 0 0deg);
-  --card-foreground:   oklch(98.5% 0 0deg);
-  --popover:           oklch(20.5% 0 0deg);
-  --popover-foreground: oklch(98.5% 0 0deg);
+  --background:        oklch(16.5% 0.014 252deg);
+  --foreground:        oklch(92% 0.006 255deg);
+  --card:              oklch(24% 0.018 252deg);
+  --card-foreground:   oklch(96.8% 0.006 255deg);
+  --popover:           oklch(23% 0.018 252deg);
+  --popover-foreground: oklch(96.8% 0.006 255deg);
 
   /* Interactive */
-  --primary:              oklch(54.6% 0.245 262.9deg);
-  --primary-foreground:   oklch(20.5% 0 0deg);
-  --secondary:            oklch(26.9% 0 0deg);
-  --secondary-foreground: oklch(98.5% 0 0deg);
-  --accent:               oklch(26.9% 0 0deg);
-  --accent-foreground:    oklch(98.5% 0 0deg);
-  --destructive:          oklch(70.4% 0.191 22.2deg);
-  --destructive-foreground: oklch(98.5% 0 0deg);
+  --primary:              oklch(60% 0.15 262.53deg);
+  --primary-foreground:   oklch(98.5% 0 0deg);
+  --secondary:            oklch(29% 0.018 252deg / 78%);
+  --secondary-foreground: oklch(93% 0.008 255deg);
+  --accent:               oklch(31.5% 0.026 248deg / 80%);
+  --accent-foreground:    oklch(96.8% 0.006 255deg);
+  --destructive:          oklch(72% 0.19 24deg);
+  --destructive-foreground: oklch(13.5% 0.022 250deg);
 
   /* Chrome */
-  --muted:            oklch(26.9% 0 0deg);
-  --muted-foreground: oklch(70.8% 0 0deg);
-  --border:           oklch(100% 0 0deg / 10%);
-  --input:            oklch(100% 0 0deg / 15%);
-  --ring:             oklch(61% 0.1 267deg / 60%);
+  --muted:            oklch(27% 0.018 252deg / 74%);
+  --muted-secondary:  oklch(45% 0.018 252deg);
+  --muted-foreground: oklch(76% 0.016 252deg);
+  --border:           oklch(100% 0 0deg / 13%);
+  --input:            oklch(100% 0 0deg / 12%);
+  --input-border:     oklch(100% 0 0deg / 18%);
+  --ring:             oklch(73.5% 0.135 235deg / 62%);
 
   /* Sidebar */
-  --sidebar:                    oklch(20.5% 0 0deg);
-  --sidebar-foreground:         oklch(98.5% 0 0deg);
-  --sidebar-primary:            oklch(48.8% 0.243 264.4deg);
-  --sidebar-primary-foreground: oklch(98.5% 0 0deg);
-  --sidebar-accent:             oklch(26.9% 0 0deg);
-  --sidebar-accent-foreground:  oklch(98.5% 0 0deg);
-  --sidebar-border:             oklch(100% 0 0deg / 10%);
-  --sidebar-ring:               oklch(55.6% 0 0deg);
+  --sidebar:                    oklch(19.5% 0.018 252deg / 70%);
+  --sidebar-foreground:         oklch(94% 0.008 255deg);
+  --sidebar-primary:            oklch(73.5% 0.135 235deg);
+  --sidebar-primary-foreground: oklch(13.5% 0.022 250deg);
+  --sidebar-accent:             oklch(30% 0.026 248deg / 70%);
+  --sidebar-accent-foreground:  oklch(96.8% 0.006 255deg);
+  --sidebar-border:             oklch(100% 0 0deg / 12%);
+  --sidebar-ring:               oklch(73.5% 0.135 235deg / 58%);
 
   /* Status */
-  --success:            oklch(69.6% 0.170 162.5deg);
-  --success-foreground: oklch(14.5% 0 0deg);
-  --warning:            oklch(82% 0.160 75.0deg);
-  --warning-foreground: oklch(14.5% 0 0deg);
-  --info:               oklch(62.3% 0.214 259.8deg);
-  --info-foreground:    oklch(98.5% 0 0deg);
+  --success:            oklch(76% 0.15 162deg);
+  --success-foreground: oklch(12.5% 0.024 164deg);
+  --warning:            oklch(83% 0.155 78deg);
+  --warning-foreground: oklch(14% 0.018 78deg);
+  --info:               oklch(73% 0.14 245deg);
+  --info-foreground:    oklch(13.5% 0.022 250deg);
 
   /* MoVoice — recording state */
-  --recording:            oklch(72% 0.185 18.0deg);
-  --recording-foreground: oklch(98.5% 0 0deg);
+  --recording:            oklch(73% 0.19 20deg);
+  --recording-foreground: oklch(13.5% 0.022 250deg);
 
-  /* Data visualisation — same in both modes */
-  --chart-1: oklch(80.9% 0.105 251.8deg);
-  --chart-2: oklch(62.3% 0.214 259.8deg);
-  --chart-3: oklch(54.6% 0.245 262.9deg);
-  --chart-4: oklch(48.8% 0.243 264.4deg);
-  --chart-5: oklch(42.4% 0.199 265.6deg);
+  /* Data visualisation */
+  --chart-1: oklch(79% 0.12 218deg);
+  --chart-2: oklch(73% 0.14 245deg);
+  --chart-3: oklch(76% 0.13 294deg);
+  --chart-4: oklch(82% 0.15 78deg);
+  --chart-5: oklch(76% 0.15 162deg);
+
+  /* App backdrop */
+  --app-background-image: linear-gradient(160deg, oklch(22% 0.04 245deg / 62%) 0%, transparent 42%),
+                          linear-gradient(22deg, oklch(25% 0.032 168deg / 34%) 0%, transparent 36%),
+                          linear-gradient(180deg, oklch(100% 0 0deg / 5%) 0%, transparent 24%);
+
+  /* Elevation shadows */
+  --shadow-xs:  0 1px 2px oklch(0% 0 0deg / 30%);
+  --shadow-sm:  0 1px 3px oklch(0% 0 0deg / 32%), 0 1px 2px -1px oklch(0% 0 0deg / 34%);
+  --shadow-md:  0 8px 18px -8px oklch(0% 0 0deg / 42%);
+  --shadow-lg:  0 16px 34px -14px oklch(0% 0 0deg / 48%);
+  --shadow-xl:  0 24px 52px -18px oklch(0% 0 0deg / 54%);
+  --shadow-2xl: 0 30px 70px -24px oklch(0% 0 0deg / 62%);
+
+  /* Liquid glass color primitives */
+  --liquid-base: oklch(27% 0.018 252deg);
+  --liquid-panel-border: oklch(100% 0 240deg / 13%);
+  --liquid-panel-border-faint: oklch(100% 0 0deg / 10%);
+  --liquid-panel-border-medium: oklch(100% 0 0deg / 14%);
+  --liquid-panel-border-soft: oklch(100% 0 0deg / 11%);
+  --liquid-panel-border-strong: oklch(100% 0 0deg / 20%);
+  --liquid-panel-highlight: oklch(100% 0 0deg / 18%);
+  --liquid-panel-highlight-soft: oklch(100% 0 0deg / 12%);
+  --liquid-control-bg: color-mix(in oklch, var(--card) 78%, transparent);
+  --liquid-control-border: var(--input-border);
+  --liquid-badge-bg: oklch(100% 0 0deg / 8%);
+  --liquid-visual-panel-bg: color-mix(in oklch, var(--card) 68%, transparent);
+  --liquid-soft-panel-bg: color-mix(in oklch, var(--card) 74%, transparent);
+  --liquid-soft-panel-border: color-mix(in oklch, var(--border) 92%, transparent);
+  --liquid-dashed-panel-border: color-mix(in oklch, var(--border) 86%, var(--foreground));
+  --liquid-read-panel-bg: var(--card-background);
+  --liquid-read-panel-border: var(--card-border);
+  --liquid-grid-panel-bg: var(--card-background);
+  --liquid-dialog-bg: var(--card-background);
+  --liquid-dialog-border: var(--card-border);
+  --liquid-icon-accent: var(--info);
+  --liquid-icon-border: 1px solid var(--liquid-panel-border-strong);
+  --liquid-icon-background: linear-gradient(
+    135deg,
+    color-mix(in oklch, var(--liquid-icon-accent) 28%, oklch(100% 0 240deg / 15%)) 0%,
+    color-mix(in oklch, var(--liquid-icon-accent) 16%, oklch(100% 0 240deg / 7%)) 100%
+  );
+  --liquid-icon-shadow: inset 0 1px 0 var(--liquid-panel-highlight), 0 10px 26px color-mix(in oklch, var(--liquid-icon-accent) 18%, transparent);
+  --glass-backdrop-filter: blur(28px) saturate(1.55);
+
+  /* Cards */
+  --card-background: linear-gradient(145deg, oklch(100% 0 0deg / 13%) 0%, oklch(100% 0 0deg / 6%) 52%, color-mix(in oklch, var(--primary) 9%, transparent) 100%);
+  --card-shadow: inset 0 1px 0 var(--liquid-panel-highlight),
+                 inset 0 0 0 1px oklch(100% 0 0deg / 3%),
+                 0 22px 52px oklch(0% 0 0deg / 30%);
+  --card-border: 1px solid var(--liquid-panel-border);
+  --card-active-background: linear-gradient(145deg, color-mix(in oklch, var(--primary) 20%, oklch(100% 0 240deg / 12%)) 0%, oklch(100% 0 0deg / 7%) 58%, color-mix(in oklch, var(--success) 8%, transparent) 100%);
+  --card-active-shadow: inset 0 1px 0 var(--liquid-panel-highlight),
+                        0 0 0 1px color-mix(in oklch, var(--info) 28%, transparent),
+                        0 16px 42px color-mix(in oklch, var(--info) 13%, oklch(0% 0 0deg / 28%));
+  --permission-card-background: linear-gradient(145deg, color-mix(in oklch, var(--primary) 22%, transparent) 0%, oklch(100% 0 240deg / 7%) 60%, color-mix(in oklch, var(--primary) 10%, transparent) 100%);
+  --permission-card-border-color: color-mix(in oklch, var(--primary) 32%, var(--liquid-panel-border));
+  --permission-card-icon-accent: oklch(100% 0 0deg / 70%);
+
+  /* Clickable list items */
+  --list-item-shadow: inset 0 1px 0 var(--liquid-panel-highlight-soft), 0 10px 28px oklch(0% 0 0deg / 18%);
+  --list-item-hover-shadow: 0 0 0 1px color-mix(in oklch, var(--primary) 24%, transparent),
+                            0 10px 28px oklch(0% 0 0deg / 20%);
+  --list-item-active-shadow: inset 0 1px 0 var(--liquid-panel-highlight),
+                             0 0 0 1px color-mix(in oklch, var(--primary) 34%, transparent),
+                             0 14px 34px color-mix(in oklch, var(--primary) 14%, oklch(0% 0 0deg / 24%));
 
   /* Settings app */
-  --settings-app-bg: var(--background);
-  --settings-app-image: none;
-  --settings-sidebar-bg: var(--sidebar);
-  --settings-sidebar-shadow: none;
+  --settings-app-bg: oklch(15.5% 0.016 252deg);
+  --settings-app-image: linear-gradient(135deg, oklch(73% 0.14 245deg / 15%) 0%, transparent 30%),
+                        linear-gradient(24deg, oklch(76% 0.15 162deg / 8%) 0%, transparent 38%),
+                        linear-gradient(90deg, oklch(15.5% 0.018 252deg) 0%, oklch(18.5% 0.018 242deg) 45%, oklch(16% 0.018 274deg) 100%);
+  --settings-sidebar-bg: linear-gradient(180deg, oklch(100% 0 0deg / 13%) 0%, oklch(100% 0 0deg / 6%) 100%),
+                         linear-gradient(135deg, color-mix(in oklch, var(--info) 12%, transparent) 0%, color-mix(in oklch, var(--success) 7%, transparent) 100%);
+  --settings-sidebar-shadow: inset 1px 0 0 oklch(100% 0 0deg / 14%),
+                             inset -1px 0 0 oklch(100% 0 0deg / 10%),
+                             inset 0 -1px 0 oklch(100% 0 0deg / 10%),
+                             18px 0 44px oklch(0% 0 0deg / 28%);
+  --settings-sidebar-item-active-bg: color-mix(in oklch, var(--primary) 20%, transparent);
+  --settings-sidebar-item-active-color: oklch(88% 0.075 235deg);
+  --settings-sidebar-item-hover-bg: color-mix(in oklch, var(--primary) 12%, transparent);
+  --settings-sidebar-item-hover-color: var(--foreground);
+  --settings-sidebar-marker-bg: color-mix(in oklch, var(--destructive) 84%, oklch(84% 0.13 24deg));
+  --settings-sidebar-marker-shadow: 0 0 0 1px color-mix(in oklch, var(--destructive) 54%, transparent),
+                                    0 0 14px color-mix(in oklch, var(--destructive) 24%, transparent);
+
+  /* Component accents */
+  --transcripts-icon-bg: linear-gradient(135deg, oklch(64% 0.16 294deg / 28%) 0%, oklch(100% 0 0deg / 7%) 100%);
+  --transcripts-icon-color: oklch(82% 0.12 300deg);
+  --audio-icon-bg: linear-gradient(135deg, oklch(73% 0.14 245deg / 26%) 0%, oklch(100% 0 0deg / 7%) 100%);
+  --audio-icon-color: oklch(82% 0.105 238deg);
+  --device-select-chevron-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23b8c7d9' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  --welcome-select-chevron-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23b8c7d9' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  --shortcut-keycaps-border: 1px solid var(--liquid-panel-border-strong);
+  --shortcut-keycaps-bg: linear-gradient(145deg, oklch(100% 0 0deg / 15%) 0%, oklch(100% 0 0deg / 6%) 100%);
+  --shortcut-keycaps-shadow: inset 0 1px 0 var(--liquid-panel-highlight),
+                             0 1px 2px oklch(0% 0 0deg / 18%),
+                             0 22px 46px oklch(0% 0 0deg / 32%),
+                             1px 0 1px color-mix(in oklch, var(--info) 20%, transparent);
+  --shortcut-key-bg: linear-gradient(180deg, oklch(81% 0.11 240deg / 20%) 0%, oklch(100% 0 0deg / 7%) 100%);
+  --shortcut-key-border: 1px solid oklch(100% 0 0deg / 12%);
+  --shortcut-key-shadow: inset 0 -5px 0 oklch(0% 0 0deg / 18%),
+                         inset 0 1px 0 oklch(100% 0 0deg / 13%);
+  --shortcut-key-first-shadow: inset 0 -5px 0 oklch(0% 0 0deg / 18%),
+                               inset 0 1px 0 oklch(100% 0 0deg / 13%),
+                               -1px 1px 1px color-mix(in oklch, var(--info) 20%, transparent);
+  --switch-thumb-color: oklch(90% 0 0deg);
+}
+
+.dark .stat-card[data-accent="sessions"] {
+  --stat-card-accent: oklch(78% 0.14 300deg);
+  --stat-card-accent-strong: oklch(84% 0.12 300deg);
+  --stat-card-accent-soft: oklch(78% 0.14 300deg / 20%);
+  --stat-card-accent-line: oklch(78% 0.14 300deg / 26%);
+  --stat-card-accent-shadow: oklch(78% 0.14 300deg / 20%);
+}
+
+.dark .stat-card[data-accent="words"] {
+  --stat-card-accent: oklch(79% 0.12 218deg);
+  --stat-card-accent-strong: oklch(84% 0.09 218deg);
+  --stat-card-accent-soft: oklch(79% 0.12 218deg / 20%);
+  --stat-card-accent-line: oklch(79% 0.12 218deg / 26%);
+  --stat-card-accent-shadow: oklch(79% 0.12 218deg / 20%);
+}
+
+.dark .stat-card[data-accent="wpm"] {
+  --stat-card-accent: oklch(83% 0.15 78deg);
+  --stat-card-accent-strong: oklch(88% 0.12 78deg);
+  --stat-card-accent-soft: oklch(83% 0.15 78deg / 18%);
+  --stat-card-accent-line: oklch(83% 0.15 78deg / 24%);
+  --stat-card-accent-shadow: oklch(83% 0.15 78deg / 18%);
+}
+
+.dark .stat-card[data-accent="keystrokes"] {
+  --stat-card-accent: oklch(78% 0.16 42deg);
+  --stat-card-accent-strong: oklch(84% 0.13 42deg);
+  --stat-card-accent-soft: oklch(78% 0.16 42deg / 18%);
+  --stat-card-accent-line: oklch(78% 0.16 42deg / 24%);
+  --stat-card-accent-shadow: oklch(78% 0.16 42deg / 18%);
+}
+
+.dark .stat-card[data-accent="time"] {
+  --stat-card-accent: oklch(76% 0.15 162deg);
+  --stat-card-accent-strong: oklch(83% 0.11 162deg);
+  --stat-card-accent-soft: oklch(76% 0.15 162deg / 20%);
+  --stat-card-accent-line: oklch(76% 0.15 162deg / 26%);
+  --stat-card-accent-shadow: oklch(76% 0.15 162deg / 20%);
 }
 
 /* ─── Keyframes ─────────────────────────────────────────────────────────────── */
@@ -317,6 +519,7 @@
 
   body {
     background-color: var(--background);
+    background-image: var(--app-background-image);
     color: var(--foreground);
     font-family: var(--font-sans);
     font-size: 1rem;        /* text-base = 16px */
