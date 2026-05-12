@@ -91,7 +91,7 @@ jobs:
 
           dmg_path="${dmg_files[0]}"
           upload_filename="${product_name}-${version}-arm64.dmg"
-          object_key="${product_name}/v${version}/${upload_filename}"
+          object_key="${product_name}/${upload_filename}"
           endpoint_url="https://${R2_ACCOUNT_ID}.r2.cloudflarestorage.com"
 
           aws s3 cp "${dmg_path}" "s3://${R2_BUCKET}/${object_key}" \
