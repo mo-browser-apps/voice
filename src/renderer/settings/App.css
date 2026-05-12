@@ -6,10 +6,8 @@
   display: flex;
   height: 100vh;
   overflow: hidden;
-  background-color: white;
-  background-image:
-    linear-gradient(135deg, rgb(207 230 255 / 30%) 0%, transparent 20%),
-    linear-gradient(90deg, #eeeff7 0%, #f5f8fd 10%, #fff 100%);
+  background-color: var(--settings-app-bg);
+  background-image: var(--settings-app-image);
   color: var(--foreground);
   isolation: isolate;
 }
@@ -26,16 +24,10 @@
   padding: calc(var(--spacing) * 4) calc(var(--spacing) * 3);
   margin: 8px 0 8px 8px;
   overflow: hidden;
-  background:
-    linear-gradient(180deg, rgb(255 255 255 / 76%) 0%, rgb(255 255 255 / 58%) 100%),
-    linear-gradient(135deg, rgb(207 230 255 / 54%) 0%, rgb(255 255 255 / 36%) 100%);
-  border-left: 1px solid white;
+  background: var(--settings-sidebar-bg);
+  border-left: 1px solid var(--sidebar-border);
   border-radius: var(--radius-2xl);
-  box-shadow:
-    inset 1px 0 0 rgb(255 255 255 / 72%),
-    inset -1px 0 0 rgb(0 0 0 / 8%),
-    inset 0 -1px 0 rgb(0 0 0 / 8%),
-    12px 0 30px rgb(89 105 130 / 9%);
+  box-shadow: var(--settings-sidebar-shadow);
   backdrop-filter: blur(36px) saturate(1.55);
   z-index: 2;
 }
@@ -76,17 +68,17 @@
 
 .settings-nav-item:hover {
   text-decoration: none;
-  background-color: color-mix(in oklch, var(--primary) 8%, #fff);
-  color: var(--sidebar-foreground);
+  background-color: var(--setting-sidebar-item-hover-bg);
+  color: var(--setting-sidebar-item-hover-color);
 }
 
 .settings-nav-item[aria-current="page"] {
-  background-color: color-mix(in oklch, var(--primary) 18%, #fff);
-  color: var(--primary);
+  background-color: var(--setting-sidebar-item-active-bg);
+  color: var(--setting-sidebar-item-active-color);
 }
 
 .settings-nav-item[aria-current="page"]:hover {
-  background-color: color-mix(in oklch, var(--primary) 18%, #fff);
+  background-color: color-mix(in oklch, var(--primary) 18%, transparent);
   color: var(--primary);
 }
 
