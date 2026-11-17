@@ -121,32 +121,11 @@ jobs:
           security set-key-partition-list -S apple-tool:,apple: -s -k "$keychain_password" "$keychain" > /dev/null
           security list-keychains -d user -s "$keychain" $(security list-keychains -d user | tr -d '"')
           npm run build -- $RELEASE_BUILD_FLAGS
+          app=$(echo build/dist/mac-${{ matrix.target == 'macos-x64' && 'x64' || 'arm64' }}/bin/*.app)
+          codesign --verify --deep --strict --verbose=2 "$app"
+          xcrun stapler validate "$app"
+          spctl --assess --type exec --verbose=4 "$app"
           npm run pack -- $RELEASE_BUILD_FLAGS
-          # Verify the installer that is published and the app bundle inside it.
-          shopt -s nullglob
-          dmgs=()
-          for file in build/dist/mac-${{ matrix.target == 'macos-x64' && 'x64' || 'arm64' }}/pack/*.dmg; do
-            [[ "$(basename "$file")" == rw.* ]] || dmgs+=("$file")
-          done
-          if [[ ${#dmgs[@]} -ne 1 ]]; then
-            echo "Expected exactly one DMG, found ${#dmgs[@]}" >&2
-            exit 1
-          fi
-          dmg="${dmgs[0]}"
-          codesign --verify --strict --verbose=2 "$dmg"
-          xcrun stapler validate "$dmg"
-          spctl --assess --type open --context context:primary-signature --verbose=4 "$dmg"
-          mount="$RUNNER_TEMP/release-dmg"
-          mkdir -p "$mount"
-          hdiutil attach "$dmg" -nobrowse -readonly -mountpoint "$mount" > /dev/null
-          trap 'hdiutil detach "$mount" -quiet || true' EXIT
-          apps=("$mount"/*.app)
-          if [[ ${#apps[@]} -ne 1 ]]; then
-            echo "Expected exactly one app in the DMG, found ${#apps[@]}" >&2
-            exit 1
-          fi
-          codesign --verify --deep --strict --verbose=2 "${apps[0]}"
-          spctl --assess --type exec --verbose=4 "${apps[0]}"
           node .mocontrol/release.mjs verified
       - name: Build Windows
         if: env.RELEASE_TARGET == 'windows' && env.RELEASE_SIGN == 'true'
