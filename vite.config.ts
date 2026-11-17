@@ -30,15 +30,6 @@ function defineMainConfig(): UserConfig {
         formats: ["es"],
         fileName: () => "index.js",
       },
-      rollupOptions: {
-        external: [
-          "mobrowser",
-          "import-in-the-middle",
-          "module-details-from-path",
-          "require-in-the-middle",
-          /^node:.*/,
-        ],
-      },
     },
     resolve: {
       conditions: ["node"],

@@ -25,12 +25,8 @@ endif()
 # Defines the main target of the application.
 add_library(mobrowser_lib STATIC ${APP_SOURCES} ${GENERATED_SOURCES})
 
-target_include_directories(mobrowser_lib PUBLIC
-        ${PROJECT_SOURCE_DIR}/src/native/gen
-        ${MOBROWSER_SDK_NATIVE_DIR}/include
-        ${protobuf_SOURCE_DIR}/src
-        ${protobuf_SOURCE_DIR}/third_party/utf8_range
-        ${absl_SOURCE_DIR})
+# Links Protobuf and adds the generated code and MoBrowser native include directories.
+mobrowser_configure_app_lib(mobrowser_lib)
 
 # macOS frameworks required by the native services.
 if(APPLE)
