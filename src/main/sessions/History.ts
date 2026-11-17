@@ -1,6 +1,6 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
-import { app, desktop, ipc } from '@mobrowser/api';
+import { app, ipc, workspace } from '@mobrowser/api';
 import { Mutex } from 'async-mutex';
 import { HistoryServiceDescriptor, type HistoryService as HistoryServiceInterface } from '../gen/ipc_service';
 import type { AudioChunkRequest, DeleteSessionRequest, GetSessionsRequest, SessionIdRequest } from '../gen/history';
@@ -106,7 +106,7 @@ export class History {
   revealSessionFolder(id: string): void {
     const dir = this.sessionStorage.getSessionDir(id);
     if (this.sessionStorage.fileExists(dir)) {
-      desktop.showPath(dir);
+      workspace.showPath(dir);
     }
   }
 

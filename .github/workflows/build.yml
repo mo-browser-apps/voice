@@ -64,6 +64,9 @@ jobs:
       - name: Build release package
         run: npm run build
 
+      - name: Build DMG and auto-update packages
+        run: npm run pack
+
       - name: Upload DMG to Cloudflare R2
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
