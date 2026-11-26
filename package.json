@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@fontsource-variable/inter": "^5.2.8",
-    "@huggingface/transformers": "^4.0.1",
+    "@huggingface/transformers": "^4.3.2",
     "@mobrowser/api": "^2.20.1",
     "@mobrowser/cli": "^2.20.1",
     "@mobrowser/native": "^2.20.1",
